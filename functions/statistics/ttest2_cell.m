@@ -4,12 +4,12 @@
 % Usage:
 %    >> [F df] = ttest2_cell( { a b } );
 %    >> [F df] = ttest2_cell(a, b);
-%    >> [F df] = ttest2_cell(a, b, 'inhomogenous');
+%    >> [F df] = ttest2_cell(a, b, 'inhomogeneous');
 %
 % Inputs:
 %   a,b       = data consisting of UNPAIRED arrays to be compared. The last 
 %               dimension of the data array is used to compute the t-test.
-%   'inhomogenous' = use computation for the degree of freedom using 
+%   'inhomogeneous' = use computation for the degree of freedom using 
 %                    inhomogeneous variance. By default the computation of
 %                    the degree of freedom is done with homogeneous
 %                    variances.
@@ -87,8 +87,8 @@ function [tval, df] = ttest2_cell(a,b,c) % assumes equal variances
         b = a{2}; 
         a = a{1}; 
     end
-    if ~strcmpi(homogeneous, 'inhomogenous') && ~strcmpi(homogeneous, 'homogeneous')
-        error('Value for homogeneous parameter can only be ''homogeneous'' or ''inhomogenous''');
+    if ~strcmpi(homogeneous, 'inhomogeneous') && ~strcmpi(homogeneous, 'homogeneous')
+        error('Value for homogeneous parameter can only be ''homogeneous'' or ''inhomogeneous''');
     end
 
     nd    = myndims(a);
@@ -97,7 +97,7 @@ function [tval, df] = ttest2_cell(a,b,c) % assumes equal variances
     meana = mymean(a, nd);
     meanb = mymean(b, nd);
     
-    if strcmpi(homogeneous, 'inhomogenous')
+    if strcmpi(homogeneous, 'inhomogeneous')
         % inhomogeneous variance from Howel, 2009, "Statistical Methods for Psychology"
         % thank you to G. Rousselet for providing these formulas
         m  = meana - meanb;

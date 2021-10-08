@@ -46,7 +46,7 @@
 %   'naccu'    = [integer] Number of surrogate data copies to use in 'perm' 
 %                 or 'bootstrap' method estimation (see above) {default: 200}.
 %   'verbose'  = ['on'|'off'] print info on the command line {default: 'on'}.
-%   'variance' = ['homegenous'|'inhomogenous'] this option is exclusively
+%   'variance' = ['homegenous'|'inhomogeneous'] this option is exclusively
 %                for parametric statistics using unpaired t-test. It allows
 %                to compute a more accurate value for the degree of freedom
 %                using the formula for inhomogeneous variance (see
@@ -181,7 +181,7 @@ function [ ori_vals, df, pvals, surrogval ] = statcond( data, varargin );
                                      'cluster'    'string'    { 'on','off' }      'off'; 
                                      'alpha'      'real'      []                  NaN;
                                      'tail'       'string'    { 'one','both','upper','lower'}    'both'; 
-                                     'variance'   'string'    { 'homogenous','inhomogenous' }    'inhomogenous'; 
+                                     'variance'   'string'    { 'homogeneous','inhomogeneous' }    'inhomogeneous'; 
                                      'returnresamplingarray' 'string'    { 'on','off' }      'off'; 
                                      'verbose'    'string'    { 'on','off' }      'on' }, 'statcond');
         if ischar(g), error(g); end
@@ -195,7 +195,7 @@ function [ ori_vals, df, pvals, surrogval ] = statcond( data, varargin );
         if ~isfield(g, 'arraycomp'), g.arraycomp = 'on'; end
         if ~isfield(g, 'verbose'),   g.verbose = 'on'; end
         if ~isfield(g, 'tail'),      g.tail = 'both'; end
-        if ~isfield(g, 'variance'),  g.variance = 'homogenous'; end
+        if ~isfield(g, 'variance'),  g.variance = 'homogeneous'; end
         if ~isfield(g, 'structoutput'), g.structoutput = 'on'; end
         if ~isfield(g, 'returnresamplingarray'),   g.returnresamplingarray = 'off'; end
     end

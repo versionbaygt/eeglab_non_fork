@@ -157,7 +157,7 @@ function m = serialize_cell_heterogenous(v)
     m = [uint8(33); ndims(v); typecast(uint32(size(v)),'uint8').'; vertcat(contents{:})];
 end
 
-% Cell array of homogenously-typed contents
+% Cell array of homogeneously-typed contents
 function m = serialize_cell_typed(v,serializer)
     contents = cellfun(serializer,v,'UniformOutput',false);
     m = [uint8(33); ndims(v); typecast(uint32(size(v)),'uint8').'; vertcat(contents{:})];
