@@ -82,7 +82,7 @@ end
 
 numbegin=0;
 head = [];
-while ~numbegin,
+while ~numbegin && ~feof(fid),
   line =fgets(fid);
   head = [head line];
   if (length(line)>=8 && all(line(1:8)=='"NCHAN%"'))
