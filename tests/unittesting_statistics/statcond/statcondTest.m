@@ -30,7 +30,7 @@
 classdef statcondTest < matlab.unittest.TestCase
     
     properties
-        sameRelTol = 1e-8;
+        sameRelTol = 1e-2;
     end
     
     properties (TestParameter)
