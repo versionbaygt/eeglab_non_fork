@@ -30,7 +30,7 @@
 classdef statcondTest < matlab.unittest.TestCase
     
     properties
-        sameRelTol = 1e-2;
+        sameRelTol = 1e-8;
     end
     
     properties (TestParameter)
@@ -73,8 +73,8 @@ classdef statcondTest < matlab.unittest.TestCase
             [t, df, pvals, ~] = statcond(a, 'mode', 'param', 'verbose', 'off', 'paired', 'off', 'variance', 'homogeneous');
             [~, p, ~, stats] = ttest2(a{1}, a{2});
             testCase.log( ...
-                sprintf("Statistics paired statcond     t-value %2.2f df=%d p=%0.4f\n", t, df, pvals) + ...
-                sprintf("Statistics paired ttest2 func. t-value %2.2f df=%d p=%0.4f\n", stats.tstat, stats.df, p) ...
+                sprintf("Statistics unpaired statcond     t-value %2.2f df=%d p=%0.4f\n", t, df, pvals) + ...
+                sprintf("Statistics unpaired ttest2 func. t-value %2.2f df=%d p=%0.4f\n", stats.tstat, stats.df, p) ...
                 );
             
             testCase.verifySame(t, stats.tstat);
@@ -164,6 +164,7 @@ classdef statcondTest < matlab.unittest.TestCase
     end
     
     methods(Test, TestTags = {'Dimensions'})
+        % testing different dimensions in statcond
         
         function pairedDimTTest(testCase, dimT_par)
             
@@ -335,8 +336,8 @@ classdef statcondTest < matlab.unittest.TestCase
             testCase.verifyEqual(rem(sa1{1}(:)',10), single([1:9 0]), 'Permutation paired resampling Error')
             testCase.verifyEqual(rem(sa1{2}(:)',10), single([1:9 0]), 'Permutation paired resampling Error')
             testCase.verifyEqual(round(msa), single((0:9)'), 'Permutation paired resampling Error')
-            testCase.verifyLength(unique(sa2{1}), 10), 'Permutation paired resampling Error';
-            testCase.verifyLength(unique(sa2{2}), 10), 'Permutation paired resampling Error';
+            testCase.verifyLength(unique(sa2{1}), 10, 'Permutation paired resampling Error');
+            testCase.verifyLength(unique(sa2{2}), 10, 'Permutation paired resampling Error');
             
             % for unpaired bootstrap, only make sure there are enough unique
             % values
