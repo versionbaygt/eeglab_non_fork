@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        release: [R2020a, R2020b, R2021a, R2021b, R2022a]
+        release: [R2020a, R2020b, R2021a, R2021b]
         experimental: [false]
         include:
           - release: R2022a
