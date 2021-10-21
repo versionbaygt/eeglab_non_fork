@@ -48,13 +48,17 @@ jobs:
           source-folder: functions
           code-coverage-cobertura: coverage_${{ matrix.release }}.xml
 
+      # Upload JUnit results to codecov.io
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           file: coverage_${{ matrix.release }}.xml
           flags: ${{ matrix.release }}
 
-      - uses: actions/upload-artifact@v2
+      # Upload PDF artifacts
+      - name: Store test report
+        uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: my-artifact
+          name: my-artifact-${{ matrix.release }}
           path: test-results/results_${{ matrix.release }}.pdf
