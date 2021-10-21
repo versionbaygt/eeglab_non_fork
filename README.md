@@ -1,5 +1,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/sccn/eeglab?color=%23fa251e&logo=GitHub)](https://github.com/sccn/eeglab/issues)
 ![Twitter Follow](https://img.shields.io/twitter/follow/eeglab2?style=social)
+[![MATLAB Test Status](https://github.com/versionbayjc/eeglab/actions/workflows/ci.yml/badge.svg?branch=feature_371)](https://github.com/versionbayjc/eeglab/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/versionbayjc/eeglab/branch/feature_371/graph/badge.svg?token=QUHZS5YFWR)](https://codecov.io/gh/versionbayjc/eeglab)
 
 # What is EEGLAB?
