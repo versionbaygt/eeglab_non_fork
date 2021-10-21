@@ -22,19 +22,43 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out repository
       - uses: actions/checkout@v2
       
       # Sets up MATLAB on the GitHub Actions runner
       - name: Setup MATLAB
-        uses: matlab-actions/setup-matlab@v0
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2021a
 
       # Runs a set of commands using the runners shell
       - name: Run all tests
         uses: matlab-actions/run-tests@v0
         with:
-          code-coverage-cobertura: coverage.xml
+          source-folder: functions
+          code-coverage-cobertura: coverage_R2021a.xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          file: coverage.xml
+          file: coverage_R2021a.xml
+          flags: R2021a
+
+      # Sets up MATLAB on the GitHub Actions runner
+      - name: Setup MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2021b
+
+      # Runs a set of commands using the runners shell
+      - name: Run all tests
+        uses: matlab-actions/run-tests@v0
+        with:
+          source-folder: functions
+          code-coverage-cobertura: coverage_R2021b.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          file: coverage_R2021b.xml
+          flags: R2021b
