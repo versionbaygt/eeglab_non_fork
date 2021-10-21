@@ -19,10 +19,15 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
 
     strategy:
       matrix:
         release: [R2020a, R2020b, R2021a, R2021b, R2022a]
+        experimental: [false]
+        include:
+          - release: R2022a
+            experimental: true
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
