@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        release: [R2020a, R2020b, R2021a, R2021b, R2022a]
+        release: [R2020a, R2020b, R2021a, R2021b]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -54,6 +54,15 @@ jobs:
         with:
           file: coverage_${{ matrix.release }}.xml
           flags: ${{ matrix.release }}
+
+      # Show Test Report
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: MATLAB Test ${{ matrix.release }} 
+          path: test-results/results_${{ matrix.release }}.xml
+          reporter: java-junit
 
       # Upload PDF artifacts
       - name: Store test report
