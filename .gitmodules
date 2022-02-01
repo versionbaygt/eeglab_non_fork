@@ -13,3 +13,6 @@
 [submodule "plugins/firfilt"]
 	path = plugins/firfilt
 	url = https://github.com/sccn/firfilt
+[submodule "tests/unittesting_tutorial"]
+	path = tests/unittesting_tutorial
+	url = https://github.com/sccn/eeglab_tutorial_scripts.git
