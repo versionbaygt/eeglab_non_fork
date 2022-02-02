@@ -11,7 +11,8 @@ testRootDir = fileparts(mfilename('fullpath'));
 % since we want to replicate running the existing tests, we should exclude
 % the same files for our wrapper as in runtests.m
 excludeFiles = { 'runtest.m' 'scanfoldersendemail.m' 'checkouteeglab.m' ...
-    'ds002718' 'unittesting_tutorial' 'unittesting_common' 'unittesting_limo' };
+    'ds002718' 'unittesting_tutorial' 'unittesting_common' 'unittesting_limo' ...
+    'regression_tests'};
 
 % in addition we want to exclude these files:
 
