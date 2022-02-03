@@ -7,6 +7,3 @@ readcontsamplefile
 
 function test_readepochsamplefile(~)
 readepochsamplefile
-
-function test_runtest_setenvironment(~)
-runtest_setenvironment
