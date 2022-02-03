@@ -1,16 +1,5 @@
-% adding paths and clearing workspace
-% ------------------------------------------
-runtest_setenvironment;
-
 % adding path for testing
 % -----------------------
-prj = matlab.project.currentProject();
-if isempty(prj)
-    error('Please open EEGLAB project to set EEGLAB paths')
-end
-rootPath = prj.RootFolder;
-addpath(fullfile(rootPath, 'STUDY5subjects'));
-addpath(fullfile(rootPath, 'ds002718'));
 
 clear;
 eeglab;
@@ -24,9 +13,10 @@ catch
     ismatlabflag = 1;
 end
 
-excludeFiles = { 'runtest.m' 'scanfoldersendemail.m' 'checkouteeglab.m' ...
+excludeFiles = { 'runtest.m' 'scanfoldersendemail.m' ...
     'ds002718' 'unittesting_tutorial' 'unittesting_common' 'unittesting_limo' ...
     'runMUtests.m' 'generateWrapperTests.m'};
+
 if ismatlabflag
     vers = eeg_getversion;
     if str2num(vers(1:2)) == 11

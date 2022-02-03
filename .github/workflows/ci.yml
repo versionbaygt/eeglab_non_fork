@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
+          lfs: true
       
       # Sets up MATLAB on the GitHub Actions runner
       - name: Setup MATLAB
@@ -46,6 +47,7 @@ jobs:
           test-results-junit: test-results/results_${{ matrix.release }}.xml
           test-results-pdf: test-results/results_${{ matrix.release }}.pdf
           source-folder: functions
+          select-by-folder: tests
           code-coverage-cobertura: coverage_${{ matrix.release }}.xml
 
       # Upload JUnit results to codecov.io
