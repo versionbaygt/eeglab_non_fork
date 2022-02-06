@@ -175,7 +175,7 @@ if nargin < 3
     options = { options{:} 'eegplotplotallrej' superpose };
     options = { options{:} 'eegplotreject'     reject };
 else
-    if isnumeric(varargin{3}) || ~isempty(str2num(varargin{3}))
+    if isnumeric(varargin{3}) || ~isnan(str2double(varargin{3}))
         options = {};
         if ischar(varargin{1}), varargin{1} = str2num(varargin{1}); end
         if ischar(varargin{2}), varargin{2} = str2num(varargin{2}); end
